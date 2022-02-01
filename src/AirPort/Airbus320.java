@@ -6,6 +6,7 @@ public class Airbus320 extends AbstractAircraft {
     public Airbus320() {
         count++;
         this.id += count;
+        this.countPlace = 70;
         this.model = this.getClass().getSimpleName();
         this.type = "Citizens";
     }
