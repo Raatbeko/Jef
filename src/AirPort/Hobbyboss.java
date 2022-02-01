@@ -6,6 +6,7 @@ public class Hobbyboss extends AbstractAircraft {
     public Hobbyboss() {
         count++;
         this.id += count;
+        this.countPlace = 50;
         this.model = this.getClass().getSimpleName();
         this.type = "Citizens";
     }

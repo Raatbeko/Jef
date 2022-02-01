@@ -6,6 +6,7 @@ public class Heller extends AbstractAircraft {
     public Heller() {
         count++;
         this.id += count;
+        this.countPlace = 120;
         this.model = this.getClass().getSimpleName();
         this.type = "Citizens";
     }

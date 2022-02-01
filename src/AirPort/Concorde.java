@@ -6,6 +6,7 @@ public class Concorde extends AbstractAircraft {
     public Concorde() {
         count++;
         this.id += count;
+        this.countPlace = 100;
         this.model = this.getClass().getSimpleName();
         this.type = "Citizens";
     }

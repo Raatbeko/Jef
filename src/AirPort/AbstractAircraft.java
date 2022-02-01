@@ -5,9 +5,18 @@ public abstract class AbstractAircraft {
     protected int id;
     protected String model;
     protected String type;
+    protected int countPlace;
     protected int count = 0;
 
     public AbstractAircraft() {
+    }
+
+    public AbstractAircraft(int id, String model, String type, int countPlace, int count) {
+        this.id = id;
+        this.model = model;
+        this.type = type;
+        this.countPlace = countPlace;
+        this.count = count;
     }
 
     public int getId() {
