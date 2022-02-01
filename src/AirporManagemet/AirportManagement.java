@@ -12,6 +12,8 @@ public class AirportManagement implements Management {
     public void addFlight(String departureTime, String arrivalTime, AbstractAircraft abstractAircraft, String status) {
 
 
+
+
     }
 
     @Override
