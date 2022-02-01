@@ -27,8 +27,7 @@ public class Main {
             if (numberOfChoose == 0 || numberOfChoose == 1) {
                 num = 0;
             }
-        } while(0!=
-                num);
+        } while(0!=num);
 
          num = -1;
 
@@ -37,13 +36,10 @@ public class Main {
             System.out.print("Type your name-> ");
             nameOfCashier = scanner.next();
             boolean checkName = false;
-            Cashiers[] var6 = cashiers;
-            int var7 = cashiers.length;
 
-            for(int var8 = 0; var8 < var7; ++var8) {
-                Cashiers cashier = var6[var8];
-                if (nameOfCashier.equalsIgnoreCase(cashier.getFullName())) {
-                    System.out.println("Hi " + cashier.getFullName() + "! Have a good working day!!!");
+            for(int i = 0; i < cashiers.length; ++i) {
+                if (nameOfCashier.equalsIgnoreCase(cashiers[i].getFullName())) {
+                    System.out.println("Hi " + cashiers[i].getFullName() + "! Have a good working day!!!");
                     checkName = true;
                     num = 0;
                 }
