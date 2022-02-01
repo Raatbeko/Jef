@@ -13,8 +13,8 @@ public class Main {
         int num = -1;
         int numberOfChoose = -1;
         Cashiers[] cashiers = new Cashiers[]{new Cashiers("Katy"), new Cashiers("Victoria"), new Cashiers("Margo")};
-
-        do {
+        boolean check = true;
+        while (check) {
             System.out.println("if you're cashier type-> 0\nif you're admin type-> 1");
             System.out.print("> ");
 
@@ -25,11 +25,11 @@ public class Main {
             }
 
             if (numberOfChoose == 0 || numberOfChoose == 1) {
-                num = 0;
+                check = false;
             }
-        } while(0!=num);
+        }
 
-         num = -1;
+        num = -1;
 
         String nameOfCashier;
         do {
@@ -37,7 +37,7 @@ public class Main {
             nameOfCashier = scanner.next();
             boolean checkName = false;
 
-            for(int i = 0; i < cashiers.length; ++i) {
+            for (int i = 0; i < cashiers.length; ++i) {
                 if (nameOfCashier.equalsIgnoreCase(cashiers[i].getFullName())) {
                     System.out.println("Hi " + cashiers[i].getFullName() + "! Have a good working day!!!");
                     checkName = true;
@@ -48,11 +48,11 @@ public class Main {
             if (!checkName) {
                 System.out.println("We didn't find you.Please try again!");
             }
-        } while(0 != num);
+        } while (0 != num);
 
         nameOfCashier = scanner.next();
 
-        while(true) {
+        while (true) {
             System.out.println("- Добавление новых рейсов-> 1\n- Покупка билетов по номеру рейса-> 2\n- Просмотр всех рейсов-> 3\n- Сформировать отчет по каждому рейсу-> 4\n- Поиск рейса по номеру билета-> 5\n- Рабочий день окончен-> 0");
 
             try {
@@ -61,7 +61,7 @@ public class Main {
                 System.out.println("Error try again!");
             }
 
-            switch(num) {
+            switch (num) {
                 case 1:
                 case 2:
                 case 3:

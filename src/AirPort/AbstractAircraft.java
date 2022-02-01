@@ -9,6 +9,7 @@ public abstract class AbstractAircraft {
     protected int count = 0;
 
     public AbstractAircraft() {
+
     }
 
     public AbstractAircraft(int id, String model, String type, int countPlace, int count) {
