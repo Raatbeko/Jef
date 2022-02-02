@@ -14,7 +14,8 @@ public class AirportManagement implements Management {
 
             for (int i = 0; i < flights.length; i++) {
                 if (flights[i] == null) {
-                    System.out.println(flights);
+                    flights[i] = new Flight();
+                    System.out.println(flights[i]);
                     return;
                 }
             }
