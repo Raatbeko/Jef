@@ -3,7 +3,7 @@ package AirporManagemet;
 import AirPort.AbstractAircraft;
 
 public class AirportManagement implements Management {
-   private Flight[] flights;
+    Flight[] flights;
 
     public AirportManagement(Flight[] flights) {
         this.flights = flights;
@@ -11,7 +11,6 @@ public class AirportManagement implements Management {
 
     @Override
     public void addFlight( String departureTime, String arrivalTime, AbstractAircraft abstractAircraft, String status) {
-
             for (int i = 0; i < flights.length; i++) {
                 if (flights[i] == null) {
                     flights[i] = new Flight();
@@ -20,10 +19,6 @@ public class AirportManagement implements Management {
                 }
             }
         }
-
-
-
-
     @Override
     public void buyTicketOfNumberFlight() {
 
