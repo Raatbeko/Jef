@@ -13,17 +13,21 @@ public class AirportManagement implements Management {
     public void addFlight(String departureTime, String arrivalTime, AbstractAircraft abstractAircraft, String status) {
 
 
-
-
     }
 
     @Override
     public void buyTicketOfNumberFlight() {
 
+
     }
 
     @Override
     public void showAllFlight() {
+        for (Flight flight : flights) {
+            if (flight != null)
+                System.out.println(flight);
+        }
+
 
     }
 
