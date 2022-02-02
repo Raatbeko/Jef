@@ -2,14 +2,15 @@ public class Flight {
     int id;
     String departureTime;
     String arrivalTime;
-//    Aircraft aircraft;
+    //    Aircraft aircraft;
     String status;
 
     public Flight() {
 
     }
-    public Flight( String departureTime, String arrivalTime, String status) {
-        this.id ++;
+
+    public Flight(String departureTime, String arrivalTime, String status) {
+        this.id++;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
 //        this.aircraft = aircraft;
@@ -38,6 +39,7 @@ public class Flight {
     public String getDepartureTime() {
         return departureTime;
     }
+
     public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
