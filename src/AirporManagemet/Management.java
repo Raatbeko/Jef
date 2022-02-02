@@ -8,6 +8,6 @@ public interface Management {
     void buyTicketOfNumberFlight();
     void showAllFlight();
     void report();
-    void searchFlightByTicketNumber();
+    void searchFlightByTicketNumber(int numOfTicket);
 
 }

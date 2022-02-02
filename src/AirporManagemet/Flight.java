@@ -3,18 +3,21 @@ package AirporManagemet;
 import AirPort.AbstractAircraft;
 
 public class Flight {
-    int id;
-    String departureTime;
-    String arrivalTime;
-    AbstractAircraft aircraft;
-    String status;
+    private int id;
+    private String departureTime;
+    private String arrivalTime;
+    private AbstractAircraft aircraft;
+    private String status;
+    private static int count = 0;
+
 
     public Flight() {
 
     }
 
     public Flight(String departureTime ,String arrivalTime, String status,AbstractAircraft aircraft) {
-        this.id++;
+        count++;
+        this.id+=count;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.aircraft = aircraft;
@@ -30,6 +33,14 @@ public class Flight {
 //                ", aircraft=" + aircraft +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+    public AbstractAircraft getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(AbstractAircraft aircraft) {
+        this.aircraft = aircraft;
     }
 
     public int getId() {
@@ -64,5 +75,11 @@ public class Flight {
         this.status = status;
     }
 
+    public static int getCount() {
+        return count;
+    }
 
+    public static void setCount(int count) {
+        Flight.count = count;
+    }
 }

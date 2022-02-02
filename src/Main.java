@@ -1,3 +1,4 @@
+import AirporManagemet.AirportManagement;
 import AirporManagemet.Cashiers;
 
 import java.util.InputMismatchException;
@@ -52,6 +53,8 @@ public class Main {
 
         nameOfCashier = scanner.next();
 
+        AirportManagement airportManagement = new AirportManagement();
+
         while (true) {
             System.out.println("- Добавление новых рейсов-> 1\n" +
                     "- Покупка билетов по номеру рейса-> 2\n- Просмотр всех рейсов-> 3\n" +
@@ -70,6 +73,9 @@ public class Main {
                 case 2:
                 case 3:
                 case 4:
+                    airportManagement.report();
+                    String enter = scanner.next();
+                    break;
                 case 5:
                 default:
                     if (0 == num) {
