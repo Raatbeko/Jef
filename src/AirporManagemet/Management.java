@@ -6,6 +6,7 @@ public interface Management {
     void buyTicketOfNumberFlight();
     void showAllFlight();
     void report();
-    Flight searchFlightByTicketNumber();
+    void searchFlightByTicketNumber();
 
+    void searchFlightByTicketNumber(Ticket[] tickets, int numberofFlight);
 }
