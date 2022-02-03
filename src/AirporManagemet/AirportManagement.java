@@ -55,7 +55,6 @@ public class AirportManagement implements Management {
     @Override
     public void searchFlightByTicketNumber(int numOfTicket) {
 
-
     }
 
     @Override
