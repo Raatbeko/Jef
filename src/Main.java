@@ -2,6 +2,7 @@ import AirPort.*;
 import AirporManagemet.AirportManagement;
 import AirporManagemet.Cashiers;
 import AirporManagemet.Flight;
+import AirporManagemet.Ticket;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -55,12 +56,14 @@ public class Main {
 
         nameOfCashier = scanner.next();
 
-        AirportManagement airportManagement = new AirportManagement(new Flight[10]);
+        AirportManagement airportManagement = new AirportManagement(new Flight[]{new Flight(), new Flight()}, new Ticket[150]);
+        Flight flight = new Flight();
+
         AbstractAircraft airbus320 = new Airbus320();
         AbstractAircraft concorde = new Concorde();
         AbstractAircraft heller = new Heller();
         AbstractAircraft hobbyboss = new Hobbyboss();
-        AbstractAircraft[] aircrafts = {airbus320,concorde,heller,hobbyboss};
+        AbstractAircraft[] aircrafts = {airbus320, concorde, heller, hobbyboss};
 
         while (true) {
             System.out.println("- Добавление новых рейсов-> 1\n" +
@@ -78,22 +81,37 @@ public class Main {
             switch (num) {
                 case 1:
                     airportManagement.checkingForFull();
-                    String departureTime,arrivalTime,nameOfAirplane;
-                    System.out.print("Departure time-> ");departureTime = scanner.next();
-                    System.out.print("\nArrival time-> ");arrivalTime = scanner.next();
-                    System.out.print("\nName of airplane-> ");nameOfAirplane = scanner.next();
+                    String departureTime, arrivalTime, nameOfAirplane;
+                    System.out.print("Departure time-> ");
+                    departureTime = scanner.next();
+                    System.out.print("\nArrival time-> ");
+                    arrivalTime = scanner.next();
+                    System.out.print("\nName of airplane-> ");
+                    nameOfAirplane = scanner.next();
                     boolean check2 = true;
                     for (AbstractAircraft aircraft : aircrafts) {
-                        if (nameOfAirplane.equalsIgnoreCase(aircraft.getModel())){
-                            airportManagement.addFlight(departureTime,arrivalTime,aircraft);
+                        if (nameOfAirplane.equalsIgnoreCase(aircraft.getModel())) {
+                            airportManagement.addFlight(departureTime, arrivalTime, aircraft);
                             check2 = false;
                         }
                     }
-                    if (check2){
+                    if (check2) {
                         System.out.println("Can't found airplane.Please try again");
                     }
+                    System.out.println(scanner.next());
                     break;
                 case 2:
+                    String whereDoesFly, departurePoint;
+                    int numberOfFlight = scanner.nextInt();
+
+                    System.out.println("Type where does fly-> ");
+                    whereDoesFly = scanner.next();
+
+                    System.out.println("Type departure point-> ");
+                    departurePoint = scanner.next();
+
+                    airportManagement.fillOutATicket(airportManagement.buyTicketOfNumberFlight(numberOfFlight), whereDoesFly, departurePoint);
+                    break;
                 case 3:
                     airportManagement.showAllFlight();
                     break;
@@ -102,10 +120,16 @@ public class Main {
                     String enter = scanner.next();
                     break;
                 case 5:
+                    airportManagement.searchFlightByTicketNumber(1);
+                    break;
+                case 6:
+                    airportManagement.removeTicket(1);
+                    break;
                 default:
                     if (0 == num) {
                         return;
                     }
+
             }
         }
     }

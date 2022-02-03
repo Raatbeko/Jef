@@ -4,7 +4,7 @@ import AirPort.AbstractAircraft;
 
 public class AirportManagement implements Management {
     private Flight[] flights;
-    private Tickets[] tickets;
+    private Ticket[] tickets;
 
     public AirportManagement() {
     }
@@ -13,7 +13,7 @@ public class AirportManagement implements Management {
         this.flights = flights;
     }
 
-    public AirportManagement(Flight[] flights, Tickets[] tickets) {
+    public AirportManagement(Flight[] flights, Ticket[] tickets) {
         this.flights = flights;
         this.tickets = tickets;
     }
@@ -22,28 +22,24 @@ public class AirportManagement implements Management {
     public void addFlight(String departureTime, String arrivalTime, AbstractAircraft abstractAircraft) {
         for (int i = 0; i < flights.length; i++) {
             if (flights[i] == null) {
-                flights[i] = new Flight(departureTime,arrivalTime,abstractAircraft);
+                flights[i] = new Flight(departureTime, arrivalTime, abstractAircraft);
                 return;
             }
         }
     }
 
     @Override
-    public void buyTicketOfNumberFlight(int numberIfFlight) {
+    public Flight buyTicketOfNumberFlight(int numberIfFlight) {
         for (Flight flight : flights) {
-            if (flight.getId() == numberIfFlight){
-                for (Tickets ticket : tickets) {
-                    if (ticket == null) {
-                        ticket= new Tickets();
-                    }
-                }
+            if (flight.getId() == numberIfFlight) {
+               return flight;
             }
         }
-
+        return null;
     }
 
     @Override
-    public void showAllFlight(){
+    public void showAllFlight() {
         for (Flight flight : flights) {
             if (flight != null)
                 System.out.println(flight);
@@ -52,8 +48,8 @@ public class AirportManagement implements Management {
 
     @Override
     public void report() {
-        System.out.println("Count on Flights -> "+ Flight.getCount());
-        System.out.println("Number of tickets sold-> "+ Tickets.getCount());
+        System.out.println("Count on Flights -> " + Flight.getCount());
+        System.out.println("Number of tickets sold-> " + Ticket.getCount());
     }
 
     @Override
@@ -64,18 +60,38 @@ public class AirportManagement implements Management {
 
     @Override
     public String checkingForFull() {
-        if (flights[flights.length-1] != null) {
+        if (flights[flights.length - 1] != null) {
             return "Flights is full";
         }
         return "";
 
     }
 
-    public Tickets[] getTickets() {
+    @Override
+    public void fillOutATicket(Flight flight,
+                               String whereDoesFly,
+                               String departurePoint) {
+
+        Ticket ticket = new Ticket(flight,whereDoesFly,departurePoint);
+
+        for (int i = 0; i < tickets.length; i++) {
+            if (tickets[i] == null){
+                tickets[i] = ticket;
+            }
+        }
+
+    }
+
+    @Override
+    public void removeTicket(int numberOfFlight) {
+
+    }
+
+    public Ticket[] getTickets() {
         return tickets;
     }
 
-    public void setTickets(Tickets[] tickets) {
+    public void setTickets(Ticket[] tickets) {
         this.tickets = tickets;
     }
 

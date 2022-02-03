@@ -11,6 +11,7 @@ public class Flight {
 
 
     public Flight() {
+        count++;
 
     }
 
