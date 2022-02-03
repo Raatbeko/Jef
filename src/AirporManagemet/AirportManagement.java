@@ -19,10 +19,10 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void addFlight(String whereDoesFly,String departurePoint,String departureTime, String arrivalTime, AbstractAircraft abstractAircraft) {
+    public void addFlight(String whereDoesFly, String departurePoint, String departureTime, String arrivalTime, AbstractAircraft abstractAircraft) {
         for (int i = 0; i < flights.length; i++) {
             if (flights[i] == null) {
-                flights[i] = new Flight(whereDoesFly,departurePoint,departureTime, arrivalTime, abstractAircraft);
+                flights[i] = new Flight(whereDoesFly, departurePoint, departureTime, arrivalTime, abstractAircraft);
                 return;
             }
         }
@@ -32,7 +32,7 @@ public class AirportManagement implements Management {
     public Flight buyTicketOfNumberFlight(int numberIfFlight) {
         for (Flight flight : flights) {
             if (flight.getId() == numberIfFlight) {
-               return flight;
+                return flight;
             }
         }
         return null;
@@ -55,6 +55,16 @@ public class AirportManagement implements Management {
     @Override
     public void searchFlightByTicketNumber(int numOfTicket) {
 
+        boolean check = true;
+        for (Ticket ticket : tickets) {
+            if (ticket.getId() == numOfTicket) {
+                System.out.println("Ваш рейс: " + ticket.getFlight());
+                check = false;
+            }
+        }
+        if (check) {
+            System.out.println("Такого билета нету");
+        }
     }
 
     @Override
@@ -67,21 +77,21 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void fillOutATicket(Flight flight,int numOfPlace) {
+    public void fillOutATicket(Flight flight, int numOfPlace) {
 
-        Ticket ticket = new Ticket(flight,numOfPlace);
+        Ticket ticket = new Ticket(flight, numOfPlace);
         boolean chek = true;
         for (int i = 0; i < tickets.length; i++) {
-            if (tickets[i] == null){
+            if (tickets[i] == null) {
                 tickets[i] = ticket;
                 chek = false;
                 System.out.println("You bought ticket!");
                 System.out.println();
-                System.out.println("Your place-> "+ numOfPlace + "\n" +flight);
+                System.out.println("Your place-> " + numOfPlace + "\n" + flight);
                 break;
             }
         }
-        if (chek){
+        if (chek) {
 
             System.out.println("All ticket sold out!!!");
         }
