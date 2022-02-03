@@ -7,7 +7,6 @@ public class Flight {
     private String departureTime;
     private String arrivalTime;
     private AbstractAircraft aircraft;
-    private String status;
     private static int count = 0;
 
 
@@ -15,13 +14,13 @@ public class Flight {
 
     }
 
-    public Flight(String departureTime ,String arrivalTime,AbstractAircraft aircraft,String status) {
+    public Flight(String departureTime ,String arrivalTime,AbstractAircraft aircraft) {
         count++;
         this.id+=count;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.aircraft = aircraft;
-        this.status = status;
+
     }
 
     @Override
@@ -30,9 +29,8 @@ public class Flight {
                 "id=" + id +
                 ", departureTime='" + departureTime + '\'' +
                 ", arrivalTime='" + arrivalTime + '\'' +
-//                ", aircraft=" + aircraft +
-                ", status='" + status + '\'' +
-                '}';
+                ", aircraft=" + aircraft +
+                 '}';
     }
 
     public AbstractAircraft getAircraft() {
@@ -65,14 +63,6 @@ public class Flight {
 
     public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public static int getCount() {

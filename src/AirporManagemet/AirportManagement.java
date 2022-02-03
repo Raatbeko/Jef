@@ -19,10 +19,10 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void addFlight(String departureTime, String arrivalTime, AbstractAircraft abstractAircraft, String status) {
+    public void addFlight(String departureTime, String arrivalTime, AbstractAircraft abstractAircraft) {
         for (int i = 0; i < flights.length; i++) {
             if (flights[i] == null) {
-                flights[i] = new Flight(departureTime,arrivalTime,abstractAircraft,status);
+                flights[i] = new Flight(departureTime,arrivalTime,abstractAircraft);
                 return;
             }
         }
@@ -34,8 +34,11 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void showAllFlight() {
-
+    public void showAllFlight(){
+        for (Flight flight : flights) {
+            if (flight != null)
+                System.out.println(flight);
+        }
     }
 
     @Override
@@ -47,6 +50,15 @@ public class AirportManagement implements Management {
     @Override
     public void searchFlightByTicketNumber(int numOfTicket) {
 
+
+    }
+
+    @Override
+    public String checkingForFull() {
+        if (flights[flights.length-1] != null) {
+            return "Flights is full";
+        }
+        return "";
 
     }
 

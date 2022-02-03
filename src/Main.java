@@ -1,5 +1,7 @@
+import AirPort.*;
 import AirporManagemet.AirportManagement;
 import AirporManagemet.Cashiers;
+import AirporManagemet.Flight;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,11 +13,11 @@ public class Main {
 
     public static void cashiers() {
         Scanner scanner = new Scanner(System.in);
-        int num = -1;
+        int num;
         int numberOfChoose = -1;
         Cashiers[] cashiers = new Cashiers[]{new Cashiers("Katy"), new Cashiers("Victoria"), new Cashiers("Margo")};
-        boolean check = true;
-        while (check) {
+        boolean check1 = true;
+        while (check1) {
             System.out.println("if you're cashier type-> 0\nif you're admin type-> 1");
             System.out.print("> ");
 
@@ -26,7 +28,7 @@ public class Main {
             }
 
             if (numberOfChoose == 0 || numberOfChoose == 1) {
-                check = false;
+                check1 = false;
             }
         }
 
@@ -53,7 +55,12 @@ public class Main {
 
         nameOfCashier = scanner.next();
 
-        AirportManagement airportManagement = new AirportManagement();
+        AirportManagement airportManagement = new AirportManagement(new Flight[10]);
+        AbstractAircraft airbus320 = new Airbus320();
+        AbstractAircraft concorde = new Concorde();
+        AbstractAircraft heller = new Heller();
+        AbstractAircraft hobbyboss = new Hobbyboss();
+        AbstractAircraft[] aircrafts = {airbus320,concorde,heller,hobbyboss};
 
         while (true) {
             System.out.println("- Добавление новых рейсов-> 1\n" +
@@ -70,8 +77,26 @@ public class Main {
 
             switch (num) {
                 case 1:
+                    airportManagement.checkingForFull();
+                    String departureTime,arrivalTime,nameOfAirplane;
+                    System.out.print("Departure time-> ");departureTime = scanner.next();
+                    System.out.print("\nArrival time-> ");arrivalTime = scanner.next();
+                    System.out.print("\nName of airplane-> ");nameOfAirplane = scanner.next();
+                    boolean check2 = true;
+                    for (AbstractAircraft aircraft : aircrafts) {
+                        if (nameOfAirplane.equalsIgnoreCase(aircraft.getModel())){
+                            airportManagement.addFlight(departureTime,arrivalTime,aircraft);
+                            check2 = false;
+                        }
+                    }
+                    if (check2){
+                        System.out.println("Can't found airplane.Please try again");
+                    }
+                    break;
                 case 2:
                 case 3:
+                    airportManagement.showAllFlight();
+                    break;
                 case 4:
                     airportManagement.report();
                     String enter = scanner.next();
