@@ -20,9 +20,12 @@ public class AirportManagement implements Management {
 
     @Override
     public void addFlight(String departureTime, String arrivalTime, AbstractAircraft abstractAircraft, String status) {
-
-
-
+        for (int i = 0; i < flights.length; i++) {
+            if (flights[i] == null) {
+                flights[i] = new Flight(departureTime,arrivalTime,abstractAircraft,status);
+                return;
+            }
+        }
     }
 
     @Override

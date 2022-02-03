@@ -15,7 +15,7 @@ public class Flight {
 
     }
 
-    public Flight(String departureTime ,String arrivalTime, String status,AbstractAircraft aircraft) {
+    public Flight(String departureTime ,String arrivalTime,AbstractAircraft aircraft,String status) {
         count++;
         this.id+=count;
         this.departureTime = departureTime;
