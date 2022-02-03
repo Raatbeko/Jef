@@ -29,7 +29,16 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void buyTicketOfNumberFlight() {
+    public void buyTicketOfNumberFlight(int numberIfFlight) {
+        for (Flight flight : flights) {
+            if (flight.getId() == numberIfFlight){
+                for (Tickets ticket : tickets) {
+                    if (ticket == null) {
+                        ticket= new Tickets();
+                    }
+                }
+            }
+        }
 
     }
 
