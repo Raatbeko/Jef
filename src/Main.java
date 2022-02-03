@@ -56,8 +56,7 @@ public class Main {
 
         nameOfCashier = scanner.next();
 
-        AirportManagement airportManagement = new AirportManagement(new Flight[]{new Flight(), new Flight()}, new Ticket[150]);
-        Flight flight = new Flight();
+        AirportManagement airportManagement = new AirportManagement(new Flight[8], new Ticket[150]);
 
         AbstractAircraft airbus320 = new Airbus320();
         AbstractAircraft concorde = new Concorde();
@@ -66,7 +65,7 @@ public class Main {
         AbstractAircraft[] aircrafts = {airbus320, concorde, heller, hobbyboss};
 
         while (true) {
-            System.out.println("- Добавление новых рейсов-> 1\n" +
+            System.out.println("\n- Добавление новых рейсов-> 1\n" +
                     "- Покупка билетов по номеру рейса-> 2\n- Просмотр всех рейсов-> 3\n" +
                     "- Сформировать отчет по каждому рейсу-> 4\n" +
                     "- Поиск рейса по номеру билета-> 5\n" +
@@ -81,7 +80,11 @@ public class Main {
             switch (num) {
                 case 1:
                     airportManagement.checkingForFull();
-                    String departureTime, arrivalTime, nameOfAirplane;
+                    String whereDoesFly, departurePoint, departureTime, arrivalTime, nameOfAirplane;
+                    System.out.println("Where does fly-> ");
+                    whereDoesFly = scanner.next();
+                    System.out.println("Departure point->");
+                    departurePoint = scanner.next();
                     System.out.print("Departure time-> ");
                     departureTime = scanner.next();
                     System.out.print("\nArrival time-> ");
@@ -91,7 +94,7 @@ public class Main {
                     boolean check2 = true;
                     for (AbstractAircraft aircraft : aircrafts) {
                         if (nameOfAirplane.equalsIgnoreCase(aircraft.getModel())) {
-                            airportManagement.addFlight(departureTime, arrivalTime, aircraft);
+                            airportManagement.addFlight(whereDoesFly,departurePoint,departureTime, arrivalTime, aircraft);
                             check2 = false;
                         }
                     }
@@ -101,17 +104,14 @@ public class Main {
                     System.out.println(scanner.next());
                     break;
                 case 2:
-                    String whereDoesFly, departurePoint;
-                    System.out.println("Type num of flight->");
+
+                    System.out.print("Type num of flight-> ");
                     int numberOfFlight = scanner.nextInt();
 
-                    System.out.println("Type where does fly-> ");
-                    whereDoesFly = scanner.next();
+                    System.out.print("Type him place-> ");
+                    int numOfPlace = scanner.nextInt();
 
-                    System.out.println("Type departure point-> ");
-                    departurePoint = scanner.next();
-
-                    airportManagement.fillOutATicket(airportManagement.buyTicketOfNumberFlight(numberOfFlight), whereDoesFly, departurePoint);
+                    airportManagement.fillOutATicket(airportManagement.buyTicketOfNumberFlight(numberOfFlight),numOfPlace);
                     break;
                 case 3:
                     airportManagement.showAllFlight();

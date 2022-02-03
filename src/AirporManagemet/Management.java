@@ -4,7 +4,7 @@ import AirPort.AbstractAircraft;
 
 public interface Management {
 
-    void addFlight(String departureTime, String arrivalTime, AbstractAircraft abstractAircraft);
+    void addFlight(String whereDoesFly,String departurePoint,String departureTime, String arrivalTime, AbstractAircraft abstractAircraft);
 
     Flight buyTicketOfNumberFlight(int numberOfFlight);
 
@@ -16,9 +16,8 @@ public interface Management {
 
     String checkingForFull();
 
-    void fillOutATicket( Flight flight,
-                        String whereDoesFly,
-                        String departurePoint);
+    void fillOutATicket( Flight flight,int numOfPlace);
+
     void removeTicket(int numberOfFlight);
 
 }

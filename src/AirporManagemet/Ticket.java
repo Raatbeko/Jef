@@ -3,22 +3,28 @@ package AirporManagemet;
 public class Ticket {
     public static int id = 1;
     private static int count;
-    private Flight flight; // номер рейса
-    private String whereDoesFly; //имя пассажира
-    private String departurePoint;
-
+    private Flight flight;// номер рейса
+    private int numOfPlace;
 
     public Ticket() {
         count++;
         id+=count;
     }
 
-    public Ticket(Flight flight, String whereDoesFly,String departurePoint) {
+    public Ticket(Flight flight,int numOfPlace) {
         count++;
         id += count;
+        this.numOfPlace = numOfPlace;
         this.flight = flight;
-        this.whereDoesFly = whereDoesFly;
-        this.departurePoint = departurePoint;
+
+    }
+
+    public int getNumOfPlace(){
+        return numOfPlace;
+    }
+
+    public void setNumOfPlace(int numOfPlace) {
+        this.numOfPlace = numOfPlace;
     }
 
     public static int getCount() {
@@ -45,19 +51,5 @@ public class Ticket {
         this.flight = flight;
     }
 
-    public String getWhereDoesFly() {
-        return whereDoesFly;
-    }
 
-    public void setWhereDoesFly(String name) {
-        this.whereDoesFly = name;
-    }
-
-    public String getDeparturePoint() {
-        return departurePoint;
-    }
-
-    public void setDeparturePoint(String departurePoint) {
-        this.departurePoint = departurePoint;
-    }
 }

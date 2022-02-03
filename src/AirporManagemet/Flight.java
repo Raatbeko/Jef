@@ -4,6 +4,8 @@ import AirPort.AbstractAircraft;
 
 public class Flight {
     private int id;
+    private String whereDoesFly;
+    private String departurePoint;
     private String departureTime;
     private String arrivalTime;
     private AbstractAircraft aircraft;
@@ -15,23 +17,41 @@ public class Flight {
 
     }
 
-    public Flight(String departureTime ,String arrivalTime,AbstractAircraft aircraft) {
+    public Flight(String whereDoesFly,String departurePoint,String departureTime ,String arrivalTime,AbstractAircraft aircraft) {
         count++;
         this.id+=count;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.aircraft = aircraft;
+        this.whereDoesFly = whereDoesFly;
+        this.departurePoint = departurePoint;
 
     }
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", departureTime='" + departureTime + '\'' +
-                ", arrivalTime='" + arrivalTime + '\'' +
-                ", aircraft=" + aircraft +
-                 '}';
+        return "Flight-> "+id +
+                "\nWhere does fly-> "+ whereDoesFly +
+                "\nDeparture point-> "+ departureTime+
+                "\nDeparture time-> "+ departureTime+
+                "\nArrival time-> "+ arrivalTime+
+                "\nAirplane-> "+ aircraft;
+    }
+
+    public String getDeparturePoint() {
+        return departurePoint;
+    }
+
+    public void setDeparturePoint(String departurePoint) {
+        this.departurePoint = departurePoint;
+    }
+
+    public String getWhereDoesFly() {
+        return whereDoesFly;
+    }
+
+    public void setWhereDoesFly(String whereDoesFly) {
+        this.whereDoesFly = whereDoesFly;
     }
 
     public AbstractAircraft getAircraft() {
