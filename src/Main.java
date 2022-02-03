@@ -102,6 +102,7 @@ public class Main {
                     break;
                 case 2:
                     String whereDoesFly, departurePoint;
+                    System.out.println("Type num of flight->");
                     int numberOfFlight = scanner.nextInt();
 
                     System.out.println("Type where does fly-> ");

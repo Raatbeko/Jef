@@ -73,11 +73,17 @@ public class AirportManagement implements Management {
                                String departurePoint) {
 
         Ticket ticket = new Ticket(flight,whereDoesFly,departurePoint);
-
+        boolean chek = true;
         for (int i = 0; i < tickets.length; i++) {
             if (tickets[i] == null){
                 tickets[i] = ticket;
+                chek = false;
             }
+        }
+        if (!chek){
+            System.out.println("You bought ticket!");
+        }else{
+            System.out.println("All ticket sold out!!!");
         }
 
     }
