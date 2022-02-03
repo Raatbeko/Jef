@@ -1,18 +1,19 @@
 package AirporManagemet;
 
+import AirPort.AbstractAircraft;
 
 public class AirportManagement implements Management {
+    Flight[] flights;
 
-  private Flight[] flights;
-  private Ticket[] tickets;
-
-  public AirportManagement(Flight[] flights) {
-      this.flights = flights;
-  }
-
+    public AirportManagement(Flight[] flights) {
+        this.flights = flights;
+    }
 
     @Override
-    public void addFlight() {
+    public void addFlight(String departureTime, String arrivalTime, AbstractAircraft abstractAircraft, String status) {
+
+
+
 
     }
 
@@ -22,10 +23,9 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void showAllFlight() {  //просмотр всех рейсов
+    public void showAllFlight() {
 
     }
-
 
     @Override
     public void report() {
@@ -33,22 +33,20 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void searchFlightByTicketNumber(Ticket[] tickets, int numberofFlight) {
-      for(int i = 0; i < tickets.length; i++){
-          if(tickets[i] == null){
-              System.out.println("Your ticket is ");
-          }
-      }
+    public void searchFlightByTicketNumber() {
+
     }
 
-
-    public Flight[] getFlights() {                ///горят красными
+    public Flight[] getFlights() {
         return flights;
     }
 
     public void setFlights(Flight[] flights) {
         this.flights = flights;
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
 }
