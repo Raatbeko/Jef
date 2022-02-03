@@ -9,5 +9,6 @@ public interface Management {
     void showAllFlight();
     void report();
     void searchFlightByTicketNumber();
+    void removeTicket(Tickets[] tickets,int numberOfFlight);
 
 }

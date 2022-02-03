@@ -4,6 +4,7 @@ import AirPort.AbstractAircraft;
 
 public class AirportManagement implements Management {
    private Flight[] flights;
+   Tickets[] tickets;
 
     public AirportManagement(Flight[] flights) {
         this.flights = flights;
@@ -43,6 +44,26 @@ public class AirportManagement implements Management {
     public void searchFlightByTicketNumber() {
 
     }
+
+    public AirportManagement(Tickets[] tickets) {
+        this.tickets = tickets;
+    }
+
+    @Override
+    public void removeTicket(Tickets[] tickets, int numberOfFlight) {
+
+        for (int  i = 0; i < tickets.length; i++) {
+                    if (tickets[i] == null) {
+
+
+                    }
+                        System.out.println("Your ticket has been found " + tickets[i]);
+                        return;
+
+            }
+        }
+
+
 
     public Flight[] getFlights() {
         return flights;

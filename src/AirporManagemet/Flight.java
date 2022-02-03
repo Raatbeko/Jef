@@ -1,21 +1,23 @@
 package AirporManagemet;
 
+import AirPort.AbstractAircraft;
+
 public class Flight {
     int id;
     String departureTime;
     String arrivalTime;
-    //    Aircraft aircraft;
+    AbstractAircraft aircraft;
     String status;
 
     public Flight() {
 
     }
 
-    public Flight(String departureTime, String arrivalTime, String status) {
+    public Flight(String departureTime, String arrivalTime,AbstractAircraft aircraft, String status) {
         this.id++;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
-//        this.aircraft = aircraft;
+        this.aircraft = aircraft;
         this.status = status;
     }
 
@@ -25,9 +27,17 @@ public class Flight {
                 "id=" + id +
                 ", departureTime='" + departureTime + '\'' +
                 ", arrivalTime='" + arrivalTime + '\'' +
-//                ", aircraft=" + aircraft +
+                ", aircraft=" + aircraft +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+    public AbstractAircraft getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(AbstractAircraft aircraft) {
+        this.aircraft = aircraft;
     }
 
     public int getId() {
