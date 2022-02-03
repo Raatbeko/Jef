@@ -3,26 +3,24 @@ package AirporManagemet;
 import AirPort.AbstractAircraft;
 
 public class AirportManagement implements Management {
-   private Flight[] flights;
-   Tickets[] tickets;
+    private Flight[] flights;
+    Tickets[] tickets;
 
     public AirportManagement(Flight[] flights) {
         this.flights = flights;
     }
 
     @Override
-    public void addFlight( String departureTime, String arrivalTime, AbstractAircraft abstractAircraft, String status) {
+    public void addFlight(String departureTime, String arrivalTime, AbstractAircraft abstractAircraft, String status) {
 
-            for (int i = 0; i < flights.length; i++) {
-                if (flights[i] == null) {
-                    flights[i] = new Flight();
-                    System.out.println(flights[i]);
-                    return;
-                }
+        for (int i = 0; i < flights.length; i++) {
+            if (flights[i] == null) {
+                flights[i] = new Flight();
+                System.out.println(flights[i]);
+                return;
             }
         }
-
-
+    }
 
 
     @Override
@@ -50,19 +48,22 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void removeTicket(Tickets[] tickets, int numberOfFlight) {
+    public void removeTicket(int numberOfFlight) {
+        boolean check = true;
 
-        for (int  i = 0; i < tickets.length; i++) {
-                    if (tickets[i] == null) {
-
-
-                    }
-                        System.out.println("Your ticket has been found " + tickets[i]);
-                        return;
-
+        for (int i = 0; i < tickets.length; i++) {
+            if (tickets[i].getFlight().getId() == numberOfFlight) {
+                tickets[i] = null;
+                check = false;
             }
         }
+        if (check){
+            System.out.println("Там тикетов и так нету!!");
 
+        }else {
+            System.out.println("Все тикеты удалены");
+        }
+    }
 
 
     public Flight[] getFlights() {
