@@ -153,7 +153,9 @@ public class Main {
                             System.out.println("File added");
                             break;
                         case 1:
-                            File file1 = new File("C:\\Users\\Dell\\Downloads\\file");
+                            int num1 = 0;
+                            num++;
+                            File file1 = new File("C:\\Users\\Dell\\Downloads\\file"+num1);
                             FileWriter fileWriter1 = new FileWriter(file1);
                             fileWriter1.write(airportManagement.report());
                             fileWriter1.close();
