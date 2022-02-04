@@ -4,6 +4,7 @@ import AirPort.AbstractAircraft;
 
 public class Flight {
     private int id;
+    private String dateToFly;
     private String whereDoesFly;
     private String departurePoint;
     private String departureTime;
@@ -17,9 +18,10 @@ public class Flight {
 
     }
 
-    public Flight(String whereDoesFly,String departurePoint,String departureTime ,String arrivalTime,AbstractAircraft aircraft) {
+    public Flight(String whereDoesFly,String departurePoint,String dateToFly,String departureTime ,String arrivalTime,AbstractAircraft aircraft) {
         count++;
         this.id+=count;
+        this.dateToFly = dateToFly;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.aircraft = aircraft;
@@ -32,10 +34,19 @@ public class Flight {
     public String toString() {
         return "Flight-> "+id +
                 "\nWhere does fly-> "+ whereDoesFly +
-                "\nDeparture point-> "+ departureTime+
+                "\nDeparture point-> "+ departurePoint+
+                "\nData to fly->"+dateToFly+
                 "\nDeparture time-> "+ departureTime+
                 "\nArrival time-> "+ arrivalTime+
                 "\nAirplane-> "+ aircraft;
+    }
+
+    public String getDateToFly() {
+        return dateToFly;
+    }
+
+    public void setDateToFly(String dateToFly) {
+        this.dateToFly = dateToFly;
     }
 
     public String getDeparturePoint() {

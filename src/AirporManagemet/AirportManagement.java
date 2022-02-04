@@ -19,10 +19,10 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void addFlight(String whereDoesFly,String departurePoint,String departureTime, String arrivalTime, AbstractAircraft abstractAircraft) {
+    public void addFlight(String whereDoesFly, String departurePoint,String dateToFly ,String departureTime, String arrivalTime, AbstractAircraft abstractAircraft) {
         for (int i = 0; i < flights.length; i++) {
             if (flights[i] == null) {
-                flights[i] = new Flight(whereDoesFly,departurePoint,departureTime, arrivalTime, abstractAircraft);
+                flights[i] = new Flight(whereDoesFly, departurePoint,dateToFly ,departureTime, arrivalTime, abstractAircraft);
                 return;
             }
         }
@@ -30,31 +30,57 @@ public class AirportManagement implements Management {
 
     @Override
     public Flight buyTicketOfNumberFlight(int numberIfFlight) {
-        for (Flight flight : flights) {
+        try {
+            for (Flight flight : flights) {
             if (flight.getId() == numberIfFlight) {
-               return flight;
+                return flight;
             }
+        }
+        }catch (NullPointerException ex){
+            System.out.println("Flight not found!");
         }
         return null;
     }
 
     @Override
     public void showAllFlight() {
+        int count =0;
         for (Flight flight : flights) {
-            if (flight != null)
+            if (flight != null) {
                 System.out.println(flight);
+            }else {
+                count++;
+            }
         }
+        if (flights.length == count){
+            System.out.println("No flights!");
+        }
+
     }
 
     @Override
-    public void report() {
-        System.out.println("Count on Flights -> " + Flight.getCount());
-        System.out.println("Number of tickets sold-> " + Ticket.getCount());
+    public String report() {
+
+        return "Count on Flights -> " + Flight.getCount() + "\nNumber of tickets sold-> " + Ticket.getCount();
+
     }
 
     @Override
     public void searchFlightByTicketNumber(int numOfTicket) {
-
+        try {
+            boolean check = true;
+            for (Ticket ticket : tickets) {
+                if (ticket.getId() == numOfTicket) {
+                    System.out.println("Ваш рейс: " + ticket.getFlight());
+                    check = false;
+                }
+            }
+            if (check) {
+                System.out.println("Такого билета нету");
+            }
+        } catch (NullPointerException ex) {
+            System.out.println("Flight not find!!!");
+        }
     }
 
     @Override
@@ -67,22 +93,24 @@ public class AirportManagement implements Management {
     }
 
     @Override
-    public void fillOutATicket(Flight flight,int numOfPlace) {
+    public void fillOutATicket(Flight flight, int numOfPlace) {
+        if (flight == null){
+            return;
+        }
 
-        Ticket ticket = new Ticket(flight,numOfPlace);
+        Ticket ticket = new Ticket(flight, numOfPlace);
         boolean chek = true;
         for (int i = 0; i < tickets.length; i++) {
-            if (tickets[i] == null){
+            if (tickets[i] == null) {
                 tickets[i] = ticket;
                 chek = false;
                 System.out.println("You bought ticket!");
                 System.out.println();
-                System.out.println("Your place-> "+ numOfPlace + "\n" +flight);
+                System.out.println("Your place-> " + numOfPlace + "\n" + flight);
                 break;
             }
         }
-        if (chek){
-
+        if (chek) {
             System.out.println("All ticket sold out!!!");
         }
 
@@ -91,18 +119,22 @@ public class AirportManagement implements Management {
     @Override
     public void removeTicket(int numberOfFlight) {
         boolean check = true;
+        try {
 
-        for (int i = 0; i < tickets.length; i++) {
-            if (tickets[i].getFlight().getId() == numberOfFlight) {
-                tickets[i] = null;
-                check = false;
+            for (int i = 0; i < tickets.length; i++) {
+                if (tickets[i].getFlight().getId() == numberOfFlight) {
+                    tickets[i] = null;
+                    check = false;
+                }
             }
-        }
-        if (check){
-            System.out.println("Там тикетов и так нету!!");
+            if (check) {
+                System.out.println("Там тикетов и так нету!!");
 
-        }else {
-            System.out.println("Все тикеты удалены");
+            } else {
+                System.out.println("Все тикеты удалены");
+            }
+        } catch (NullPointerException ex) {
+            System.out.println("Flight not found!");
         }
 
     }

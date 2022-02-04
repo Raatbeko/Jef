@@ -4,13 +4,13 @@ import AirPort.AbstractAircraft;
 
 public interface Management {
 
-    void addFlight(String whereDoesFly,String departurePoint,String departureTime, String arrivalTime, AbstractAircraft abstractAircraft);
+    void addFlight(String whereDoesFly,String departurePoint,String dateToFly,String departureTime, String arrivalTime, AbstractAircraft abstractAircraft);
 
     Flight buyTicketOfNumberFlight(int numberOfFlight);
 
     void showAllFlight();
 
-    void report();
+    String report();
 
     void searchFlightByTicketNumber(int numOfTicket);
 

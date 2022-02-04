@@ -20,6 +20,14 @@ public abstract class AbstractAircraft {
         this.count = count;
     }
 
+    public int getCountPlace() {
+        return countPlace;
+    }
+
+    public void setCountPlace(int countPlace) {
+        this.countPlace = countPlace;
+    }
+
     public int getId() {
         return id;
     }

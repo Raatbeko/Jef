@@ -1,7 +1,7 @@
 package AirporManagemet;
 
 public class Ticket {
-    public static int id = 1;
+    public int id = 1;
     private static int count;
     private Flight flight;// номер рейса
     private int numOfPlace;
@@ -35,12 +35,12 @@ public class Ticket {
         Ticket.count = count;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
-    public static void setId(int id) {
-        Ticket.id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Flight getFlight() {
