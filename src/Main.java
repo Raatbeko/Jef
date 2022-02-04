@@ -165,7 +165,7 @@ public class Main {
 
                     break;
                 case 5:
-                    System.out.println("Type ticket number-> ");
+                    System.out.print("Type ticket number-> ");
                     int numOfTicket = scanner.nextInt();
                     airportManagement.searchFlightByTicketNumber(numOfTicket);
                     break;

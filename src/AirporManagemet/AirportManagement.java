@@ -122,9 +122,12 @@ public class AirportManagement implements Management {
         try {
 
             for (int i = 0; i < tickets.length; i++) {
-                if (tickets[i].getFlight().getId() == numberOfFlight) {
-                    tickets[i] = null;
-                    check = false;
+                if (tickets[i] != null) {
+                    if (tickets[i].getFlight().getId() == numberOfFlight) {
+                        tickets[i] = null;
+                        Ticket.setCount(Ticket.getCount()-1);
+                        check = false;
+                    }
                 }
             }
             if (check) {
