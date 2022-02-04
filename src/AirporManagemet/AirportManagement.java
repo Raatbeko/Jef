@@ -90,6 +90,20 @@ public class AirportManagement implements Management {
 
     @Override
     public void removeTicket(int numberOfFlight) {
+        boolean check = true;
+
+        for (int i = 0; i < tickets.length; i++) {
+            if (tickets[i].getFlight().getId() == numberOfFlight) {
+                tickets[i] = null;
+                check = false;
+            }
+        }
+        if (check){
+            System.out.println("Там тикетов и так нету!!");
+
+        }else {
+            System.out.println("Все тикеты удалены");
+        }
 
     }
 
